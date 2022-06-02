@@ -1,0 +1,62 @@
+
+<app-navbar></app-navbar>
+<!-- dialog button -->
+<button mat-raised-button color="accent" (click)="openDialog()" class="create-ticket-btn">Create Ticket</button>
+
+<div class="mat-elevation-z8 data-table" >
+  <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+    
+
+     <!-- Status-->
+     <ng-container matColumnDef="resolved">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">
+      <mat-chip-list>
+        <mat-chip [style.background-color]="row.resolved ? 'green' : 'red'"  selected>{{row.resolved ? "Resolved" : "Active"}}</mat-chip>
+      </mat-chip-list>
+      </td>
+    </ng-container>
+    <!-- CreatedBy Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created By</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+    <!--description-->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let row">{{row.description}}</td>
+    </ng-container>
+    <!--created at-->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>created At</th>
+      <td mat-cell *matCellDef="let row">{{row.createdAt}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="updatedAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>updatedAt</th>
+      <td mat-cell *matCellDef="let row">{{row.updatedAt}}</td>
+    </ng-container>
+     <!-- actions-->
+     <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+      <td mat-cell *matCellDef="let row" >
+        
+       
+        <i *ngIf="this.authService.user._id===row.creator && !row.resolved" class="fa fa-pencil-square-o fa-2x" aria-hidden="true" (click)="openDialog();onEdit(row)"></i>
+
+        <i *ngIf="this.authService.user._id===row.creator && !row.resolved" class="fa fa-check fa-2x" aria-hidden="true"  (click)="onDelete(row)"></i></td> 
+    </ng-container>
+   
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>

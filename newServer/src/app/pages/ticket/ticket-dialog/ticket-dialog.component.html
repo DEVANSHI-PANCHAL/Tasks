@@ -1,0 +1,30 @@
+<form
+(ngSubmit)="onCreateTicketSubmit(registerForm); 
+registerForm.reset()"
+#registerForm="ngForm">
+    <h3>{{(registerForm.value._id == "" || registerForm.value._id == null) ? "Create Ticket" : "Update Ticket"}}</h3><hr/>
+    <input type="hidden" 
+    name="_id" 
+    #_id="ngModel" 
+    [(ngModel)]="ticketservice.selectedTicket._id">
+    
+    <label for="name">Name</label><br/>
+    <input type="text"
+    class="form-control" 
+    name="name"
+    #name="ngModel"
+    [(ngModel)]="ticketservice.selectedTicket.name" disabled/>
+    <br/>
+    
+    <label for="description">Description</label><br/>
+    <input type="textarea"
+    class="form-control" 
+    
+    name="description"
+    #description="ngModel"
+    [(ngModel)]="ticketservice.selectedTicket.description" /><br/>
+    <!-- <input type="submit" value="Create"> -->
+    <!-- <input type="button" (click)="onClose();" value="Close"> -->
+    <button type="submit" mat-button [mat-dialog-close]="true" class="active">Submit</button>
+    <button mat-button mat-dialog-close class="cancel">Cancel</button>
+</form>
