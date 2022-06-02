@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" *ngIf="!this.authService.isloggedin === false" >
+    <span class="example-spacer">Ticket Application Angular</span>
+    
+    <span class="verified_user" >{{authService.user?.name}}</span>
+    
+   <span class="button_logout">
+       <button mat-raised-button color="warn" (click)="onLogout()">Logout</button>
+    </span>
+</mat-toolbar>

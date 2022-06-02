@@ -1,0 +1,43 @@
+.container-fluid {
+    height: 90vh;
+    overflow: hidden;
+    color: #fff;
+
+    background-size: cover;
+}
+
+form {
+    height: 80vh;
+    width: 50%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+form h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+form .form-control {
+    margin-bottom: 20px;
+    width: 150%;
+}
+
+.alertMsg {
+    width: 222px;
+    margin-block: 0; 
+    margin-left: 34px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+}
+.btn {
+    margin-top: 0px;
+    background-color: #07244f;
+    color: #fff;
+    width: 150%;
+}
+i{
+    position:sticky;
+}
+

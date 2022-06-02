@@ -1,0 +1,10 @@
+.cancel{
+    color: red;
+}
+.active{
+    color: green;
+}
+form{
+    width: 400px;
+    height: 250px;
+}
